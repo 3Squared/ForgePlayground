@@ -29,5 +29,3 @@ npm run build
 # Publishing a new version
 
 Once you are happy with the changes you have made to the playground, please open a PR targeting the `main` branch and the build pipeline will take care of the rest!
-
-test
