@@ -22,7 +22,7 @@ jobs:
       - name: Clean install
         run: npm ci
         
-      - name: Clean build
+      - name: Run build
         run: npm run build
         
       - name: Publish to NPM
