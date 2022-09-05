@@ -1,14 +1,14 @@
 {
   "name": "@3squared/forge-playground",
   "author": "Jacob Minor",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/forge-playground.js",
   "module": "dist/forge-playground.js",
   "types": "dist/types",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
