@@ -1,8 +1,8 @@
 name: Create New Version
 
 on:
-  pull_request: 
-    branches: ["main"]
+  pull_request:
+    branches: [ "main" ]
   push:
     branches: [ "main" ]
     
@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  publish-package:
+  build-project:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,12 +19,21 @@ jobs:
         with:
           node-version: 16
         
-      - name: Clean install
-        run: npm ci
-        
-      - name: Run build
-        run: npm run build
-        
+      - name: Clean install & build
+        run: | 
+          npm ci
+          npm run build
+    
+  publish-package:
+    runs-on: ubuntu-latest
+    needs: [build-project]
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
