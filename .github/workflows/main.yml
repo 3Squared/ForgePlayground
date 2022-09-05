@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 16
         
-      - Clean install
+      - name: Clean install
         run: npm ci
         
       - name: Clean build
