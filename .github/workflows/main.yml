@@ -1,6 +1,8 @@
 name: Create New Version
 
 on:
+  pull_request: 
+    branches: ["main"]
   push:
     branches: [ "main" ]
     
