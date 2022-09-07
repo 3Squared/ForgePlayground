@@ -33,6 +33,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+
+      - name: Clean install & build
+        run: |
+          npm ci
+          npm run build
       
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v1
