@@ -9,16 +9,22 @@
 
 <script setup lang="ts">
 import { BIconFiles, BButton } from "bootstrap-vue";
+import { useForgeToasts } from '@3squared/forge-ui'
+import { computed } from "vue";
+const { forgeToast } = useForgeToasts()
+import Prism from 'prismjs';
 
-defineProps({
-  formattedCode: {
+const props = defineProps({
+  code: {
     type: String,
-    required: true
-  },
-  copyToClipboard: {
-    type: Function,
     required: true
   }
 })
 
+const formattedCode = computed(() => Prism.highlight(props.code, Prism.languages.markup, 'vue'));
+
+const copyToClipboard = () => {
+  navigator.clipboard.writeText(props.code!)
+  forgeToast('success', 'Copied!')
+}
 </script>

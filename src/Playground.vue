@@ -50,15 +50,14 @@
         </template>
       </b-card>
     </div>
-    <code-block :formattedCode="formattedCode" :copyToClipboard="copyToClipboard"/>
+    <code-block :code="code" />
   </div>
 </template>
 
 <script lang='ts' setup>
 import { BButton, BCard, BFormCheckbox, BFormInput, BFormSelect } from 'bootstrap-vue';
-import CodeBlock from "./components/CodeBlock.vue";
-import { computed, defineProps } from 'vue';
-import Prism from 'prismjs';
+import { defineProps } from 'vue';
+import CodeBlock from './components/CodeBlock.vue'
 import { PropDefs } from './composables/useMapProp';
 
 const props = defineProps({
@@ -68,11 +67,6 @@ const props = defineProps({
   config: { type: Object as () => Partial<Record<string, PropDefs>>, required: true}
 });
 
-const formattedCode = computed(() => Prism.highlight(props.code, Prism.languages.markup, 'vue'));
-
-const copyToClipboard = () => {
-  navigator.clipboard.writeText(props.code);
-};
 
 </script>
 
