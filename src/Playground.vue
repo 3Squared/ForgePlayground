@@ -50,19 +50,14 @@
         </template>
       </b-card>
     </div>
-    <div class='position-relative mt-2'>
-      <b-button class='copy-code position-absolute text-white' variant='link' @click='copyToClipboard'>Copy
-        <b-icon-files />
-      </b-button>
-      <pre class='position-relative p-3 pt-4 rounded-lg code-block'><code v-html='formattedCode' class="text-white"/></pre>
-    </div>
+    <code-block :code="code" />
   </div>
 </template>
 
 <script lang='ts' setup>
-import { BButton, BCard, BFormCheckbox, BFormInput, BFormSelect, BIconFiles } from 'bootstrap-vue';
-import { computed, defineProps } from 'vue';
-import Prism from 'prismjs';
+import { BButton, BCard, BFormCheckbox, BFormInput, BFormSelect } from 'bootstrap-vue';
+import { defineProps } from 'vue';
+import CodeBlock from './components/CodeBlock.vue'
 import { PropDefs } from './composables/useMapProp';
 
 const props = defineProps({
@@ -72,11 +67,6 @@ const props = defineProps({
   config: { type: Object as () => Partial<Record<string, PropDefs>>, required: true}
 });
 
-const formattedCode = computed(() => Prism.highlight(props.code, Prism.languages.markup, 'vue'));
-
-const copyToClipboard = () => {
-  navigator.clipboard.writeText(props.code);
-};
 
 </script>
 
