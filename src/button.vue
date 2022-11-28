@@ -10,10 +10,8 @@
         <component :is='BButton' v-bind='options'>{{ content }}</component>
       </template>
       <template #additionalOptions>
-        <template>
           <label>Button Content</label>
           <b-form-input v-model='content'></b-form-input>
-        </template>
       </template>
     </playground>
   </div>
